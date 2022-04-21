@@ -1,6 +1,5 @@
 ﻿using System;
 using AddressBooks;
-using AdressBooks;
 
 class program
 {
@@ -9,7 +8,7 @@ class program
         AddressBook AB = new AddressBook();
         AB.Book();
         Console.WriteLine("Enter the Address Details");
-        AdressBooks.Contact contact = new Contact();
+        AddressBooks.Contact contact = new Contact();
         Console.WriteLine("Enter FirstName");
         contact.FirstName = Convert.ToString(Console.ReadLine());
 
