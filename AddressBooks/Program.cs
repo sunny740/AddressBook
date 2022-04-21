@@ -10,7 +10,7 @@ class program
         bool check = true;
         while (check)
         {
-            Console.WriteLine("1.Add Contact\n2.Display Contact");
+            Console.WriteLine("1. Add Contact\n2. Display Contact\n3. UpdateContact");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -19,6 +19,9 @@ class program
                     break;
                 case 2:
                     contact.Display();
+                    break;
+                case 3:
+                    contact.Update();
                     break;
                 case 0:
                     check = false;
