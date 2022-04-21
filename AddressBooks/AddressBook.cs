@@ -140,7 +140,21 @@ namespace AddressBooks
                 }
                 Display();
             }
-
+        }
+        public void Delete()
+        {
+            Contact d = new Contact();
+            Console.WriteLine("Enter First Name");
+            string name = Convert.ToString(Console.ReadLine());
+            foreach (var contact in addContact)
+            {
+                if (contact.FirstName.Equals(name))
+                {
+                    d = contact;
+                }
+            }
+            addContact.Remove(d);
+            Display();
         }
     }
 }

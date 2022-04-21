@@ -23,13 +23,13 @@ class program
                 case 3:
                     contact.Update();
                     break;
+                case 4:
+                    contact.Delete();
+                    break;
                 case 0:
                     check = false;
                     break;
-
             }
         }
-
     }
-
 }
