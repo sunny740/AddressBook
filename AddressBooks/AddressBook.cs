@@ -14,7 +14,6 @@ namespace AddressBooks
         Contact contact = new Contact();
         public void AddContact()
         {
-
             Console.WriteLine("Enter the Address Details");
 
             Contact contact1 = new Contact()
@@ -131,8 +130,6 @@ namespace AddressBooks
                             Console.WriteLine("Choose the right option : ");
                             break;
                     }
-
-
                 }
                 else
                 {
@@ -140,7 +137,16 @@ namespace AddressBooks
                 }
                 Display();
             }
-
+        }
+        public void AddMultipleContacts()
+        {
+            Console.WriteLine("Enter the number of contacts to be added: ");
+            int numberOfContacts = Convert.ToInt32(Console.ReadLine());
+            while (numberOfContacts > 0)
+            {
+                AddContact();
+                numberOfContacts--;
+            }
         }
     }
 }
