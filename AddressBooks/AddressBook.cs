@@ -14,25 +14,25 @@ namespace AddressBooks
         Contact contact = new Contact();
         public void AddContact()
         {
-            Console.WriteLine("Enter the Address Details");
+            Console.WriteLine("Enter The Address Details");
 
             Contact contact1 = new Contact()
             {
-                FirstName = Convert.ToString(Console.ReadLine()),
+                FirstName = Console.ReadLine(),
 
-                LastName = Convert.ToString(Console.ReadLine()),
+                LastName = Console.ReadLine(),
 
-                Address = Convert.ToString(Console.ReadLine()),
+                Address = Console.ReadLine(),
 
-                City = Convert.ToString(Console.ReadLine()),
+                City = Console.ReadLine(),
 
-                State = Convert.ToString(Console.ReadLine()),
+                State = Console.ReadLine(),
 
                 ZipCode = Convert.ToInt32(Console.ReadLine()),
 
                 MobileNumber = Convert.ToInt64(Console.ReadLine()),
 
-                Email = Convert.ToString(Console.ReadLine()),
+                Email = Console.ReadLine(),
 
             };
             Contact contact2 = new Contact()
@@ -90,7 +90,7 @@ namespace AddressBooks
             foreach (var contact in addContact)
             {
                 Console.WriteLine("Enter The Number First Name");
-                string name = Convert.ToString(Console.ReadLine());
+                string name = Console.ReadLine();
 
                 if (contact.FirstName.Equals(name))
                 {
@@ -99,48 +99,64 @@ namespace AddressBooks
                     switch (optionn)
                     {
                         case 1:
-                            Console.WriteLine("enter the last name you want to edit : ");
+                            Console.WriteLine("Enter The Last Name You Want To Edit : ");
                             contact.LastName = Console.ReadLine();
                             break;
                         case 2:
-                            Console.WriteLine("enter the address you want to edit :");
+                            Console.WriteLine("Enter The Address You Want To Edit :");
                             contact.Address = Console.ReadLine();
                             break;
                         case 3:
-                            Console.WriteLine("enter the city: ");
+                            Console.WriteLine("Enter The City: ");
                             contact.City = Console.ReadLine();
                             break;
                         case 4:
-                            Console.WriteLine("enter the state you want to edit :");
+                            Console.WriteLine("Enter The State You Want To Edit :");
                             contact.State = Console.ReadLine();
                             break;
                         case 5:
-                            Console.WriteLine("enter the email you want to edit :");
+                            Console.WriteLine("Enter The Email You Want To Edit :");
                             contact.Email = Console.ReadLine();
                             break;
                         case 6:
-                            Console.WriteLine("enter the zip you want to edit :");
+                            Console.WriteLine("Enter The Zip You Want To Edit :");
                             contact.ZipCode = Convert.ToInt32(Console.ReadLine());
                             break;
                         case 7:
-                            Console.WriteLine("enter the phone you want to edit :");
+                            Console.WriteLine("Enter The Mobile You Want To Edit :");
                             contact.MobileNumber = Convert.ToInt64(Console.ReadLine());
                             break;
                         default:
-                            Console.WriteLine("Choose the right option : ");
+                            Console.WriteLine("Choose The Right Option : ");
                             break;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Name not Exist");
+                    Console.WriteLine("Name Not Exist");
                 }
                 Display();
             }
         }
+        public void Delete()
+        {
+            Contact d = new Contact();
+            Console.WriteLine("Enter First Name");
+            string name = Convert.ToString(Console.ReadLine());
+            foreach (var contact in addContact)
+            {
+                if (contact.FirstName.Equals(name))
+                {
+                    d = contact;
+                }
+            }
+            addContact.Remove(d);
+            Display();
+        }
+
         public void AddMultipleContacts()
         {
-            Console.WriteLine("Enter the number of contacts to be added: ");
+            Console.WriteLine("Enter The Number Of Contacts To Be Added: ");
             int numberOfContacts = Convert.ToInt32(Console.ReadLine());
             while (numberOfContacts > 0)
             {

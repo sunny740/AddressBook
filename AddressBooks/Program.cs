@@ -2,11 +2,11 @@
 using AddressBooks;
 class program
 {
-    public static void Main(String[] args)
+    public static void Main(string[] args)
     {
         AddressBook contact = new AddressBook();
 
-        Console.WriteLine("Welcome to Address Book Project");
+        Console.WriteLine("***** Welcome To Address Book Project *****\n");
         bool check = true;
         while (check)
         {
