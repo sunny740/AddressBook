@@ -273,5 +273,20 @@ namespace AddressBooks
                 Console.WriteLine(name);
             }
         }
+        public void SortNameByCityStateZip()
+        {
+            List<string> SortedByZip = new List<string>();
+            foreach (Contact contact in addressBook)
+            {
+                string data1 = null;
+                if (data1 == contact.City.ToString() || data1 == contact.City || data1 == contact.State)
+                    SortedByZip.Add(data1);
+            }
+            SortedByZip.Sort();
+            foreach (var data in addressBook)
+            {
+                Console.WriteLine(data.FirstName + ", " + data.LastName + ", " + data.City + ", " + data.State + ", " + data.ZipCode);
+            }
+        }
     }
 }
