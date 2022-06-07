@@ -222,5 +222,22 @@ namespace AddressBooks
                 }
             }
         }
+        public void ViewPersonByCity()
+        {
+            Console.Write("View By City/State : ");
+            string cityNames = Console.ReadLine();
+            var obj = addressBook.FindAll(x => x.City == cityNames || x.State == cityNames);
+            if (obj.Count > 0)
+            {
+                foreach (var data in obj)
+                {
+                    Console.WriteLine(data.FirstName + ", " + data.City + ", " + data.State);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Enter City/State Name That Present in List.");
+            }
+        }
     }
 }

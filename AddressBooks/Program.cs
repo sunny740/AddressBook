@@ -7,7 +7,7 @@ class program
         Console.WriteLine("***** WelCome To Address-Book ******");
         bool end = true;
         Console.WriteLine("\nSelectNumber\n1. Create Contact\n2. Display Contact\n3. Edit Contact\n4. Delete Contact\n5. Add Multiple Contacts\n" +
-                "6. Add Data in Dictionary\n7. Edit data in Dictionary\n8. Display Dictionary info\n9. Duplicate Contact Check\n10. Search Through City.");
+                "6. Add Data in Dictionary\n7. Edit data in Dictionary\n8. Display Dictionary info\n9. Duplicate Contact Check\n10. Search Through City\n11. View By City/State.");
         Contact contact = new Contact();
         AddressBookss cont = new AddressBookss();
         while (end)
@@ -57,6 +57,9 @@ class program
                     Console.Write("Search Contact through City: ");
                     string cityName = Console.ReadLine();
                     cont.SearchPersonCity(cityName);
+                    break;
+                case 11:
+                    cont.ViewPersonByCity();
                     break;
                 default:
                     end = false;
