@@ -61,6 +61,22 @@ namespace AddressBooks
             contact.ZipCode = Convert.ToInt32(Console.ReadLine());
             addressBook.Add(contact);
         }
+        public void CheckDuplicateContact(string firstName)
+        {
+            foreach (Contacts contact in addressBook)
+            {
+                if (contact.FirstName == firstName)
+                {
+                    Console.WriteLine("Name is Already Present, Please Enter Different Name.\n");
+                    Console.WriteLine("Enter New Contact Details.");
+                    CreateContact();
+                }
+                else
+                {
+                    Display();
+                }
+            }
+        }
         public void AddCon(Contact contact)
         {
             addressBook.Add(contact);
@@ -137,11 +153,34 @@ namespace AddressBooks
             addressBook.Remove(delete);
             DisplayCon();
         }
+        public void AddMultipleContacts()
+        {
+            Console.WriteLine("Enter The Number Of Contacts To Be Added: ");
+            int numCon = Convert.ToInt32(Console.ReadLine());
+
+            while (numCon > 0)
+            {
+                CreateContacts();
+                numCon--;
+            }
+            DisplayCon();
+        }
         public void AddDictData(string name)
         {
             foreach (var data in DictName)
             {
                 if (DictName.Keys.Equals(name))
+                {
+                    addressBook = data.Value;
+                }
+                Console.WriteLine(DictName);
+            }
+        }
+        public void displayDictionaryData(string name)
+        {
+            foreach (var data in DictName)
+            {
+                if (data.Key.Equals(name))
                 {
                     addressBook = data.Value;
                 }
@@ -162,7 +201,7 @@ namespace AddressBooks
         }
         public bool NameExists(string name)
         {
-            foreach (var data in DictName.Keys)
+            foreach (var data in addressBook)
             {
                 if (data.Equals(name))
                 {

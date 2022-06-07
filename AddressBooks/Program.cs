@@ -6,8 +6,8 @@ class program
     {
         Console.WriteLine("***** WelCome To Address-Book ******");
         bool end = true;
-        Console.WriteLine("\nSelect The Number\n1. Add Contact\n2. Display\n3. EditContact\n4. DeleteContact\n5. " +
-            "Add Data in Dictionary\n6. Edit data in Dictionary\n7. Display Dictionary info\n8. End Of Program");
+        Console.WriteLine("\nSelectNumber\n1. Create Contact\n2. Display Contact\n3. Edit Contact\n4. Delete Contact\n5. Add Multiple Contacts\n" +
+                "6. Add Data in Dictionary\n7. Edit data in Dictionary\n8. Display Dictionary info\n9. Duplicate Contact Check\n10. End Of Program");
         Contact contact = new Contact();
         AddressBookss cont = new AddressBookss();
         while (end)
@@ -30,22 +30,30 @@ class program
                     cont.DelCon();
                     break;
                 case 5:
+                    cont.AddMultipleContacts();
+                    break;
+                case 6:
                     Console.Write("Enter the Name for Adding data in Dictionary : ");
                     string dictionaryName = Console.ReadLine();
                     cont.AddDictData(dictionaryName);
                     break;
-                case 6:
+                case 7:
                     Console.Write("Enter the Name for Editing data in Dictionary : ");
                     string dictName = Console.ReadLine();
                     string contactName = Console.ReadLine();
                     cont.EditDict(dictName, contactName);
                     break;
-                case 7:
+                case 8:
                     Console.Write("Enter the Name for Display data in Dictionary : ");
                     string dictionary = Console.ReadLine();
-                    cont.NameExists(dictionary);
+                    cont.displayDictionaryData(dictionary);
                     break;
-                case 8:
+                case 9:
+                    Console.Write("Enter the FirstName for Check Duplicate Contact in Dictionary : ");
+                    string firstName = Console.ReadLine();
+                    cont.CheckDuplicateContact(firstName);
+                    break;
+                case 10:
                     end = false;
                     Console.WriteLine("Program Is Ended");
                     break;
