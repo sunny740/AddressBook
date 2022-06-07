@@ -8,7 +8,7 @@ class program
         bool end = true;
         Console.WriteLine("\nSelectNumber\n1. Create Contact\n2. Display Contact\n3. Edit Contact\n4. Delete Contact\n5. Add Multiple Contacts\n" +
                 "6. Add Data in Dictionary\n7. Edit data in Dictionary\n8. Display Dictionary info\n9. Duplicate Contact Check\n10. Search Through City\n" +
-                "11. View By City/State\n12. Count By City.");
+                "11. View By City/State\n12. Count By City\n13. Sort Name By Alphabet.");
         Contact contact = new Contact();
         AddressBookss cont = new AddressBookss();
         while (end)
@@ -64,6 +64,9 @@ class program
                     break;
                 case 12:
                     cont.CountByCity();
+                    break;
+                case 13:
+                    cont.SortNameByAlphabeticalOrder();
                     break;
                 default:
                     end = false;
