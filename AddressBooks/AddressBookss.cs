@@ -13,6 +13,7 @@ namespace AddressBooks
         List<Contact> addressBook = new List<Contact>();
         Dictionary<string, List<Contact>> DictName = new Dictionary<string, List<Contact>>();
         Contact contact = new Contact();
+        const string filePath = @"H:\Assignments\AddressBook\AddressBookProgram\ContactBook.txt";
         public AddressBookss()
         {
             Contact contact1 = new Contact()
@@ -63,17 +64,17 @@ namespace AddressBooks
         }
         public void CheckDuplicateContact(string firstName)
         {
-            foreach (Contacts contact in addressBook)
+            foreach (Contact contact in addressBook)
             {
                 if (contact.FirstName == firstName)
                 {
                     Console.WriteLine("Name is Already Present, Please Enter Different Name.\n");
                     Console.WriteLine("Enter New Contact Details.");
-                    CreateContact();
+                    CreateContacts();
                 }
                 else
                 {
-                    Display();
+                    DisplayCon();
                 }
             }
         }
@@ -286,6 +287,25 @@ namespace AddressBooks
             foreach (var data in addressBook)
             {
                 Console.WriteLine(data.FirstName + ", " + data.LastName + ", " + data.City + ", " + data.State + ", " + data.ZipCode);
+            }
+        }
+        public void ReadingFileIO()
+        {
+            if (File.Exists(filePath))
+            {
+                StreamReader read = new StreamReader(filePath);
+                try
+                {
+                    string s = "";
+                    while ((s = read.ReadLine()) != null)
+                    {
+                        Console.WriteLine(s);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }
