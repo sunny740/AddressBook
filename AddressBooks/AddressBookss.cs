@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System;
 using CsvHelper;
 using System.Globalization;
+using System.Text.Json;
+using Newtonsoft.Json;
+using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace AddressBooks
 {
@@ -18,6 +21,7 @@ namespace AddressBooks
         const string filePath = @"H:\Assignments\AddressBook\AddressBookProgram\ContactBook.txt";
         const string IMPORT_CSV = @"E:\BridgeLabzProject\AddressBook\AddressBooks\AdressBook.CSV";
         const string EXPORT_CSV = @"E:\BridgeLabzProject\AddressBook\AddressBooks\AdressBook.CSV";
+        const string EXPORT_JSON = @"E:\BridgeLabzProject\AddressBook\AddressBooks\EXPORT_JSON.json";
         public AddressBookss()
         {
             Contact contact1 = new Contact()
@@ -330,6 +334,30 @@ namespace AddressBooks
                         using (var csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
                         {
                             csvExport.WriteRecords(records);
+                        }
+                    }
+                }
+            }
+        }
+        public void ReadAndWriteDataFromCSVJson()
+        {
+            using (var reader = new StreamReader(IMPORT_CSV))
+            {
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    var records = csv.GetRecords<Contact>().ToList();
+                    Console.WriteLine("After Reading CSV File");
+                    foreach (var data in records)
+                    {
+                        Console.WriteLine(data.FirstName + ", " + data.LastName + ", " + data.Email + ", " + data.MobileNumber +
+                       ", " + data.City + ", " + data.State + ", " + data.ZipCode);
+                    }
+                    JsonSerializer serializer = new JsonSerializer();
+                    using (var writter = new StreamWriter(EXPORT_JSON))
+                    {
+                        using (var writer = new JsonTextWriter(writter))
+                        {
+                            serializer.Serialize(writer, records);
                         }
                     }
                 }
