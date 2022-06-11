@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
+using CsvHelper;
+using System.Globalization;
 
 namespace AddressBooks
 {
@@ -14,6 +16,8 @@ namespace AddressBooks
         Dictionary<string, List<Contact>> DictName = new Dictionary<string, List<Contact>>();
         Contact contact = new Contact();
         const string filePath = @"H:\Assignments\AddressBook\AddressBookProgram\ContactBook.txt";
+        const string IMPORT_CSV = @"E:\BridgeLabzProject\AddressBook\AddressBooks\AdressBook.CSV";
+        const string EXPORT_CSV = @"E:\BridgeLabzProject\AddressBook\AddressBooks\AdressBook.CSV";
         public AddressBookss()
         {
             Contact contact1 = new Contact()
@@ -305,6 +309,29 @@ namespace AddressBooks
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                }
+            }
+        }
+        public void ReadAndWriteDataFromCSV()
+        {
+            using (var reader = new StreamReader(IMPORT_CSV))
+            {
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    var records = csv.GetRecords<Contact>().ToList();
+                    Console.WriteLine("After Reading CSV File");
+                    foreach (var data in records)
+                    {
+                        Console.WriteLine(data.FirstName + ", " + data.LastName + ", " + data.Email + ", " + data.MobileNumber +
+                        ", " + data.City + ", " + data.State + ", " + data.ZipCode);
+                    }
+                    using (var writer = new StreamWriter(EXPORT_CSV))
+                    {
+                        using (var csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                        {
+                            csvExport.WriteRecords(records);
+                        }
+                    }
                 }
             }
         }

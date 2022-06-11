@@ -16,5 +16,9 @@ namespace AddressBooks
         public int ZipCode { get; set; }
         public string Email { get; set; }
         public long MobileNumber { get; set; }
-    }
+        public override string ToString()
+        {
+            return $"firstname:{FirstName} lastname:{LastName} address:{Address} email:{Email} mobile:{MobileNumber} city:{City} state:{State} zipcode:{ZipCode} ";
+        }
+}
 }
